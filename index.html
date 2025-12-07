@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="particle" style="left: 10%; animation-delay: 0s; width: 10px; height: 10px;"></div>
+    <div class="particle" style="left: 30%; animation-delay: 2s; width: 15px; height: 15px;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 4s; width: 8px; height: 8px;"></div>
+    <div class="particle" style="left: 50%; animation-delay: 6s; width: 12px; height: 12px;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 1s; width: 6px; height: 6px;"></div>
+    <div class="particle" style="left: 20%; animation-delay: 8s; width: 14px; height: 14px;"></div>
+    <div class="container">
+        <h2>Login</h2>
+
+        <input id="email" type="email" placeholder="Email" />
+        <input id="password" type="password" placeholder="Password" />
+
+        <button id="loginBtn">Login</button>
+        <p>Don't have an account? <a href="signup.html">Create Account</a></p>
+    </div>
+
+    <script type="module">
+        import { auth, signInWithEmailAndPassword } from "./firebase.js";
+
+        document.getElementById("loginBtn").onclick = () => {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    window.location.href = "dashboard.html";
+                })
+                .catch(error => alert(error.message));
+        };
+    </script>
+</body>
+
+</html>

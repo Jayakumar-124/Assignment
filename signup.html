@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="particle" style="left: 10%; animation-delay: 0s; width: 10px; height: 10px;"></div>
+    <div class="particle" style="left: 30%; animation-delay: 2s; width: 15px; height: 15px;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 4s; width: 8px; height: 8px;"></div>
+    <div class="particle" style="left: 50%; animation-delay: 6s; width: 12px; height: 12px;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 1s; width: 6px; height: 6px;"></div>
+    <div class="particle" style="left: 20%; animation-delay: 8s; width: 14px; height: 14px;"></div>
+    <div class="container">
+        <h2>Create Account</h2>
+
+        <input id="name" type="text" placeholder="Full Name" />
+        <input id="email" type="email" placeholder="Email" />
+        <input id="password" type="password" placeholder="Password" />
+
+        <button id="signupBtn">Sign Up</button>
+        <p>Already have an account? <a href="index.html">Login</a></p>
+    </div>
+
+   <script type="module">
+    import { auth, createUserWithEmailAndPassword } from "./firebase.js";
+
+
+    // 1️⃣ Get input elements first
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+    // 2️⃣ Button click function
+    document.getElementById("signupBtn").onclick = async () => {
+
+        // 3️⃣ Read values inside the click event
+        const email = emailInput.value;
+        const password = passwordInput.value;
+
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+            alert("Signup successful!");
+        } catch (error) {
+            console.log(error);
+            alert(error.message);
+        }
+    };
+</script>
+
+</body>
+
+</html>
+</body>
+
+</html>

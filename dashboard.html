@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="particle" style="left: 10%; animation-delay: 0s; width: 10px; height: 10px;"></div>
+    <div class="particle" style="left: 30%; animation-delay: 2s; width: 15px; height: 15px;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 4s; width: 8px; height: 8px;"></div>
+    <div class="particle" style="left: 50%; animation-delay: 6s; width: 12px; height: 12px;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 1s; width: 6px; height: 6px;"></div>
+    <div class="particle" style="left: 20%; animation-delay: 8s; width: 14px; height: 14px;"></div>
+    <div class="container">
+        <h2>Welcome, User!</h2>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script type="module">
+        import { auth, signOut } from "./firebase.js";
+
+        function logout() {
+            signOut(auth).then(() => {
+                window.location.href = "index.html";
+            });
+        }
+        window.logout = logout;
+    </script>
+</body>
+
+</html>
